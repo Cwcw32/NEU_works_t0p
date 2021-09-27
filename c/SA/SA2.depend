@@ -1,0 +1,102 @@
+# depslib dependency file v1.0
+1555599255 source:c:\users\29459\desktop\sa\da.c
+	"SortStat.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"DA.h"
+	<time.h>
+	"output.h"
+	<stdio.h>
+	<unistd.h>
+	<windows.h>
+
+1553304676 c:\users\29459\desktop\sa\sortstat.h
+
+1555341166 c:\users\29459\desktop\sa\da.h
+
+1553304676 c:\users\29459\desktop\sa\output.h
+
+1555594198 source:c:\users\29459\desktop\sa\di.c
+	"SortStat.h"
+	"DA.h"
+	<stdio.h>
+	<windows.h>
+	<stdlib.h>
+
+1555599349 source:c:\users\29459\desktop\sa\en.c
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	<windows.h>
+	"DA.h"
+	"SS.h"
+	"SortStat.h"
+	"DI.h"
+	<math.h>
+
+1553304676 c:\users\29459\desktop\sa\ss.h
+
+1553304676 c:\users\29459\desktop\sa\di.h
+
+1553130588 source:c:\users\29459\desktop\sa\help.c
+	"SortStat.h"
+
+1555599311 source:c:\users\29459\desktop\sa\main.c
+	"DA.h"
+	"DI.h"
+	"En.h"
+	"exit.h"
+	"help.h"
+	"output.h"
+	"SA.h"
+	"SortStat.h"
+	"SS.h"
+	<windows.h>
+	<stdio.h>
+	<time.h>
+	<math.h>
+
+1553304676 c:\users\29459\desktop\sa\en.h
+
+1551876658 c:\users\29459\desktop\sa\exit.h
+
+1551876658 c:\users\29459\desktop\sa\help.h
+
+1553304676 c:\users\29459\desktop\sa\sa.h
+
+1555594273 source:c:\users\29459\desktop\sa\output.c
+	"SortStat.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"DA.h"
+	<time.h>
+
+1553288020 source:c:\users\29459\desktop\sa\sa.c
+	"SortStat.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"DA.h"
+	<time.h>
+	"output.h"
+	<windows.h>
+
+1555592938 source:c:\users\29459\desktop\sa\sortstat.c
+	"SortStat.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"DA.h"
+	<time.h>
+
+1553287464 source:c:\users\29459\desktop\sa\ss.c
+	"SortStat.h"
+	<time.h>
+	<conio.h>
+	<windows.h>
+	<mmsystem.h>
+	<stdio.h>
+	"DA.h"
+

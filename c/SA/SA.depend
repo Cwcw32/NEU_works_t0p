@@ -1,0 +1,123 @@
+# depslib dependency file v1.0
+1553194796 source:c:\users\29459\documents\codeblock\sa\da.c
+	"SortStat.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"DA.h"
+	<time.h>
+	"output.h"
+	<stdio.h>
+	<windows.h>
+	<unistd.h>
+
+1553197542 source:c:\users\29459\documents\codeblock\sa\di.c
+	"SortStat.h"
+	"DA.h"
+	<stdio.h>
+	<windows.h>
+	<stdlib.h>
+
+1553197615 source:c:\users\29459\documents\codeblock\sa\main.c
+	"DA.h"
+	"DI.h"
+	"En.h"
+	"exit.h"
+	"help.h"
+	"output.h"
+	"SA.h"
+	"SortStat.h"
+	"SS.h"
+	<windows.h>
+	<stdio.h>
+	<time.h>
+	<math.h>
+
+1553130613 c:\users\29459\documents\codeblock\sa\da.h
+
+1553096537 c:\users\29459\documents\codeblock\sa\di.h
+
+1552097758 source:c:\users\29459\documents\codeblock\sa\exit.c
+
+1553130588 source:c:\users\29459\documents\codeblock\sa\help.c
+	"SortStat.h"
+
+1553182099 source:c:\users\29459\documents\codeblock\sa\output.c
+	"SortStat.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"DA.h"
+	<time.h>
+
+1553191838 source:c:\users\29459\documents\codeblock\sa\sa.c
+	"SortStat.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"DA.h"
+	<time.h>
+	"output.h"
+	<windows.h>
+
+1553186097 source:c:\users\29459\documents\codeblock\sa\sortstat.c
+	"SortStat.h"
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	"DA.h"
+	<time.h>
+
+1553187342 source:c:\users\29459\documents\codeblock\sa\ss.c
+	"SortStat.h"
+	<time.h>
+	<conio.h>
+	<windows.h>
+	<mmsystem.h>
+	<stdio.h>
+
+1551876658 c:\users\29459\documents\codeblock\sa\sortstat.h
+
+1551876658 c:\users\29459\documents\codeblock\sa\ss.h
+
+1553197604 source:c:\users\29459\documents\codeblock\sa\en.c
+	<stdlib.h>
+	<string.h>
+	<stdio.h>
+	<windows.h>
+	"DA.h"
+	"SS.h"
+	"SortStat.h"
+	"DI.h"
+	<math.h>
+	<stdio.h>
+	<math.h>
+
+1552618771 c:\users\29459\documents\codeblock\sa\en.h
+
+1551876658 c:\users\29459\documents\codeblock\sa\exit.h
+
+1551876658 c:\users\29459\documents\codeblock\sa\help.h
+
+1551876658 c:\users\29459\documents\codeblock\sa\output.h
+
+1553191838 c:\users\29459\documents\codeblock\sa\sa.h
+
+1552268349 source:c:\users\29459\documents\codeblock\sa\da.h
+
+1551876658 source:c:\users\29459\documents\codeblock\sa\di.h
+
+1552269711 source:c:\users\29459\documents\codeblock\sa\en.h
+
+1551876658 source:c:\users\29459\documents\codeblock\sa\exit.h
+
+1551876658 source:c:\users\29459\documents\codeblock\sa\help.h
+
+1551876658 source:c:\users\29459\documents\codeblock\sa\output.h
+
+1551876658 source:c:\users\29459\documents\codeblock\sa\sa.h
+
+1551876658 source:c:\users\29459\documents\codeblock\sa\sortstat.h
+
+1551876658 source:c:\users\29459\documents\codeblock\sa\ss.h
+

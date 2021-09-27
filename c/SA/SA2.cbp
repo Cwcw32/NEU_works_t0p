@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="SA" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/SA" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-finput-charset=UTF-8" />
+					<Add option="-fexec-charset=GBK" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/SA" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="DA.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DA.h" />
+		<Unit filename="DI.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="DI.h" />
+		<Unit filename="En.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="En.h" />
+		<Unit filename="SA.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="SA.h" />
+		<Unit filename="SS.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="SS.h" />
+		<Unit filename="SortStat.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="SortStat.h" />
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="output.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="output.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

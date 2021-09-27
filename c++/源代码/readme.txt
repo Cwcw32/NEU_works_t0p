@@ -1,0 +1,51 @@
+Documention
+-----------
+项目实现了五子棋游戏，界面美观，操作便捷，可以进行双人对战，能够对上一次的下棋过程进行复盘，同时也可以完成基本的五子棋操作，如认输，悔棋等，在每个界面之间可以使用返回进行界面转换，其他详细功能的实现方式可以点击主界面的帮助按钮进行查询。
+代码分工：胥卜凡（50%），董修良（25%），王有为（25%）
+-----------
+编译器：Qt Creator 4.8.2 (Enterprise)
+编译环境:Qt 5.9.8
+-----------
+使用说明:
+        鼠标点击即可；
+主要流程:
+        开始菜单选择“人人对战”进入游戏界面，在左方区域内用鼠标可以执行落子，右方点击玩家名称上方头像可更换头像，点击悔棋实现悔棋，点击复盘进入复盘界面，点击返回返回到开始菜单；
+        开始菜单选择“帮助”进入帮助界面，利用上下页按钮进行翻阅，点击返回返回到开始菜单；
+        开始菜单选择“退出”，退出游戏；
+------------
+代码目录结构:
+        headers：
+            bangzhu.h
+            fupan.h
+            gamescene1.h
+            mainwindow.h
+            player.h
+        sources:
+            bangzhu.cpp
+            fupan.cpp
+            gamescene1.cpp
+            mainwindow.cpp
+            player.cpp
+        forms:
+            bangzhu.ui
+            fupan.ui
+            gamescene1.ui
+            mainwindow.ui
+        resources:
+              pictures.qrc：
+                 /new1
+                    b.png
+                    m1.jpg
+                    p2.jpg
+                    p2~1.jpg
+                    p3.jpg
+                    p3~1.jpg
+                    p4.jpg
+                    p5.jpg
+                    p6.jpg
+                    p7.jpg
+                    p8.jpg
+                    w.png
+-------------------------
+感谢您的使用
+
