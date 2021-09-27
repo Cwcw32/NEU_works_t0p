@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>科普文库</title>
+<!--CSS-->
+	  <link rel="stylesheet" href="css/base.css"><!--导航栏-->
+	  <link rel="stylesheet" href="css/footer.css"><!--底部导航-->
+	  <link rel="stylesheet" href="css/news_c.css"><!--底部导航-->
+
+</head>
+<!--JS脚本-->
+	<script src="js/jquery.js"></script>
+	<script src="js/news_fp.js"></script>
+  <script type="text/javascript" src="layui/layui.js"></script>
+  <script type="text/javascript">
+    layui.config({
+      base: '../res/js/util/'
+    }).use(['element','laypage','jquery','menu'],function(){
+      element = layui.element,laypage = layui.laypage,$ = layui.$,menu = layui.menu;
+      laypage.render({
+        elem: 'demo'
+        ,count: 70 //数据总数，从服务端得到
+      });
+      menu.init();
+    })
+  </script>
+<body>
+<!--网页导航-->
+<header>
+    <div id="logo"><a href="home.html"></a></div>
+    <nav class="topnav" id="topnav">
+	  <a href="./home.html">
+		  <span>首页</span>
+		  <span class="en">Home</span>
+	  </a>
+	  <a href="./news.html">
+		  <span>新闻</span>
+		  <span class="en">News</span>
+	  </a>
+		  <a href="./kepu.html">
+		  <span>科普</span>
+		  <span class="en">Know</span>
+	  </a>
+    </nav>
+</header>
+<!-- 新闻部分  -->
+
+  <div class="content">
+    <div class="cont w1000">
+      <div class="title">
+        <span class="layui-breadcrumb" lay-separator="|">
+          <a href="./home.html" class="active">主页</a>
+          <a href="./kepu.html">环境文库</a>
+        </span>
+      </div>
+      <div class="list-item">
+        <div class="item">
+          <div class="layui-fluid">
+            <div class="layui-row">
+              <div class="layui-col-xs12 layui-col-sm8 layui-col-md7">
+                <div class="item-cont">
+                  <h3><a href="./news/news_p5.html" >EPC水环境治理项目问题和解决思路</a></h3>
+                  <h5>科普文库</h5>
+                  <p><a href="./news/news_p5.html" >随着人类居住生活环境质量的提高，人们对水污染问题愈加看重，因此，水环境治理具有较大的市场空间。但目前EPC水环境治理仍存在一定的问题，为进一步提高建筑企业在水环境治理领域业务中的核心竞争力，本文就EPC水环境治理项目实施层面存在的共性问题进行了初步思考，并提出了合理化建议，以期为当前EPC水环境治理项目提供理论参考。</a></p>
+                </div>
+            </div>
+            </div>
+           </div>
+        </div>
+		
+        <div class="item">
+          <div class="layui-fluid"> 
+            <div class="layui-row">
+              <div class="layui-col-xs12 layui-col-sm8 layui-col-md7">
+                <div class="item-cont">
+                  <h3><a href="./news/news_p6.html" >数字水务及其在污水处理厂中的应用探索</a><button class="layui-btn layui-btn-danger new-icon">new</button></h3>
+                  <h5>科普文库</h5>
+                  <p><a href="./news/news_p6.html" >面对基础设施老化且资金不足、公共政策不能与时俱进和气候变化等因素加剧水资源短缺、水质问题以及水安全等新风险，数字水务显示出多重价值。因此，加快水务行业的数字化进程显得尤为紧迫。污水处理厂的建设是解决水环境污染问题的基本举措，着重介绍以5G 技术为基础，探索其与数字技术在污水处理厂中的结合与应用。</a></p>
+                </div>
+            </div>
+            </div>
+           </div>
+        </div>	    
+		
+        <div class="item">
+          <div class="layui-fluid"> 
+            <div class="layui-row">
+              <div class="layui-col-xs12 layui-col-sm8 layui-col-md7">
+                <div class="item-cont">
+                  <h3><a href="./news/kp_p5.html" >环境保护方法——怎样环保</h3>
+                  <h5>科普文库</h5>
+                  <p><a href="./news/kp_p5.html" >环境保护已经成为了世界范围内最受关注的话题，那么我们怎样从生活点滴做起，去保护环境呢？</a></p>
+                </div>
+            </div>
+            </div>
+           </div>
+        </div>	    
+		
+        <div class="item">
+          <div class="layui-fluid"> 
+            <div class="layui-row">
+              <div class="layui-col-xs12 layui-col-sm8 layui-col-md7">
+                <div class="item-cont">
+                  <h3><a href="./news/kp_p3.html" >中华人民共和国环境保护法（自2015年1月1日起施行）</h3>
+                  <h5>科普文库</h5>
+                  <p><a href="./news/kp_p3.html" >（1989年12月26日第七届全国人民代表大会常务委员会第十一次会议通过  2014年4月24日第十二届全国人民代表大会常务委员会第八次会议修订）</a></p>
+                </div>
+            </div>
+            </div>
+           </div>
+        </div>	    
+	
+        <div class="item">
+          <div class="layui-fluid"> 
+            <div class="layui-row">
+              <div class="layui-col-xs12 layui-col-sm8 layui-col-md7">
+                <div class="item-cont">
+                  <h3><a href="./news/kp_p4.html" >生态环境保护典型案例</a></h3>
+                  <h5>科普文库</h5>
+                  <p><a href="./news/kp_p4.html" >近年来，各级人民法院坚持以习近平新时代中国特色社会主义思想为指导，深入学习领会习近平生态文明思想，紧紧围绕党和国家工作大局，积极回应人民群众的美好生活需要，通过依法审理环境资源刑事、民事、行政各类案件，落实最严格的源头保护、损害赔偿和责任追究制度，为保护生态环境、助力绿色发展与建设美丽中国提供了有力的司法服务和保障。</a></p>
+                </div>
+            </div>
+            </div>
+           </div>
+        </div>	    
+      </div>
+      <div id="demo" style="text-align: center;"></div>
+    </div>
+  </div>		
+<!--INDEX第五个主体,底部-->
+<div class="dibu">
+<div class="footer">
+	<div class="other-link clearfix">
+		<div class="link-look clearfix">
+			<div class="link-list">
+				<h3 class="link-title">网站导航</h3>
+				<ul>
+					<li>
+						<a href="home.html">首页</a>
+					</li>
+										<li>
+						<a href="news.html">新闻</a>
+					</li>
+										<li>
+						<a href="kepu.html">科普</a>
+					</li>
+				</ul>
+			</div>
+			<div class="link-list">
+				<h3 class="link-title">快速入口</h3>
+				<ul>
+					<li>
+						<a href="http://www.baidu.com" target="_blank" class="c_login">百度</a>
+					</li>
+				</ul>
+			</div>
+			<div class="link-list">
+				<h3 class="link-title">帮助支持</h3>
+				<ul>
+					<li>
+						<a href="http://www.chinaenvironment.com/">环保网</a>
+					</li>
+					<li>
+						<a href="http://www.mee.gov.cn/">中华人民共和国生态环境部</a>
+					</li>
+				</ul>
+			</div>
+			<div class="link-list">
+				<h3 class="link-title">关于我们</h3>
+				<ul>
+					<li>
+						<a href="#">关于本网站</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="sucai-contact">
+			<div class="bottom-logo">
+				<a href="#"></a>
+			</div>
+			<div class="sucai-companyname">联系我</div>
+			<div class="sucai-qq">8:00~11:00在线 QQ：294594605</div>
+
+				
+    
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<p>Copyright © Type0Factor. All Rights Reserved. 2018 版权所有</p>
+	</div>
+</div>
+</div>
+</body>
+</html>

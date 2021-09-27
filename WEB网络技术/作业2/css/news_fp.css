@@ -1,0 +1,32 @@
+/* CSS Document */
+
+		.title {
+		    padding:5px;
+			background: #F7F7F7;
+			text-align: center;
+			vertical-align: middle;
+			border-radius: 12px;
+			margin-bottom: 16px;
+			margin-top: 10px;
+			color: #616161;
+			font-size: 16px;
+		}
+ 
+		.font {
+			color: #00a5e0;
+			font-size: 14px;
+		}
+ 
+		.paging {
+			width: 1660px;
+			height: 40px;
+			background: #EFF3F8;
+			padding-top: 8px;
+			padding-left: 30px;
+			margin-top: 20px;
+		}
+ 
+		.page-font {
+			color: #292929;
+			font-size: 14px;
+		}

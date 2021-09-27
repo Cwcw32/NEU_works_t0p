@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+
+
+*{margin:0px;padding:0px;box-sizing:border-box}
+body{margin:0 auto;font-size:12px;font-family:"微软雅黑";line-height:normal;min-width:1200px}
+ul{list-style:none}
+a{text-decoration:none}
+
+.footer{width:100%;background-color:#323A45;padding-top:70px;height:auto;overflow:hidden;
+	position: relative;
+top:10px;}
+.other-link{width:1200px;margin:0 auto;height:auto;overflow:hidden}
+.other-link>div{float:left}
+.other-link .sucai-contact{float:right}
+.link-look{width:960px;padding-bottom:45px}
+.link-list{float:left;width:20%}
+.link-list h3{height:45px;line-height:20px;font-size:20px;color:#ffffff}
+.link-list ul li a{line-height:33px;color:#ABACAF;font-size:15px}
+.link-list ul li a:hover{color:#FF6666}
+.sucai-contact{width:240px}
+.bottom-logo{width:132px;height:38px}
+.bottom-logo a{display:block;width:100%;height:100%;background:url("../images/index_sprite_img.png") no-repeat -151px -10px}
+.sucai-companyname{height:40px;line-height:18px;font-size:18px;color:#ffffff;margin-top:25px}
+.sucai-phone,.sucai-qq{height:34px;line-height:15px;font-size:15px;color:#ABACAF}
+.erweima-box{margin-top:34px}
+.erweima-box>div{float:left;width:100px}
+.erweima-box>div:first-child{margin-right:30px}
+.wechat-erwei div:first-child,.phonenet-erwei div:first-child{height:30px;line-height:14px;font-size:14px;color:#ABACAF}
+.footer-bottom{height:100px;text-align:center;padding-top:27px;border-top:1px solid #42444B}
+.footer-bottom p{line-height:26px;font-size:14px;color:#6C6E73}
+.footer-bottom p span{margin-left:17px}
+.footer-bottom p span.police-icon{display:inline-block;width:25px;height:20px;background:url("../images/index_sprite_img.png") no-repeat -334px -170px;vertical-align:top}
+.sucai_wechat,.sucai_web{width:100%;height:100px}
+.sucai_wechat{background:url("../images/index_sprite_img.png") no-repeat -250px -206px}
+.sucai_web{background:url("../images/index_sprite_img.png") no-repeat -360px -206px}

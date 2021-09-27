@@ -1,0 +1,190 @@
+@charset "utf-8";
+
+
+
+*{
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+	list-style:none;
+	font-family:"微软雅黑"
+}
+ul{
+	list-style:none
+}
+a{
+	text-decoration:none
+}
+.logout-solution-wrap{
+	width:100%;
+	background:#fff
+}
+.logout-solution{
+	max-width:1200px;
+	margin:0 auto;
+	position:relative
+}
+.logout-solution .title{
+	padding-bottom: 10px;
+	font-size: 30px;
+	font-weight: 300;
+	color: #333;
+	text-align: center;
+	position: relative;
+	top:10px;
+}
+.logout-solution .desc {
+	padding-bottom: 20px;
+	margin: 0 auto;
+	font-size: 14px;
+	color: #666;
+	text-align: center;
+}
+.logout-solution .title a{
+	float:right;
+	text-decoration:none;
+	font-size:14px;
+	color:#108ee9;
+	letter-spacing:0;
+	text-align:right;
+	position:absolute;
+	right:0
+}
+.logout-solution .title a:hover{
+	text-decoration:underline
+}
+.lsbs{
+	height:400px;
+	margin-top:40px
+}
+.lsbs-container>div:first-child,.lsbs-container>div:first-child a{
+	border-radius:4px 0 0 4px
+}
+.lsbs-container>div:last-child,.lsbs-container>div:last-child a{
+	border-radius:0 4px 4px 0
+}
+.lsb-background{
+	width:400px;
+	height:400px;
+	float:left
+}
+.lsb-background:nth-child(1){
+	background: url(../images/bg1.png) center center no-repeat rgb(244, 245, 250);
+	background-size: 100% 100%;
+}
+.lsb-background:nth-child(2){
+	background: url(../images/bg2.jpg) center center no-repeat rgb(244, 245, 250);
+	background-size: 100% 100%;
+}
+.lsb-background:nth-child(3){
+	background: url(../images/bg3.jpg) center center no-repeat rgb(244, 245, 250);
+	background-size: 100% 100%;
+}
+.lsb{
+	width:100%;
+	height:100%;
+	padding:0 60px;
+	background:rgba(0,0,0,.4);
+	text-align:center;
+	position:relative;
+	transition:all .7s;
+	display:block;
+	overflow:hidden
+}
+.lsb:hover{
+	cursor:pointer;
+	background:rgba(2,137,255,.8)
+}
+.lsb:hover .lsb-icon{
+	margin-top:-44px
+}
+.lsb:hover .lsb-name{
+	margin-top:106px
+}
+.lsb:hover .lsb-span{
+	margin-top:28px
+}
+.lsb:hover .lsb-introduce{
+	margin-top:16px
+}
+.lsb:hover .lsb-href{
+	margin-top:32px
+}
+.lsb-icon{
+	width:44px;
+	height:44px;
+	margin:auto;
+	margin-top:135px;
+	transition:all .5s
+}
+.lsb-icon img{
+	width:100%;
+	height:100%
+}
+.lsb-name{
+	font-size:24px;
+	color:#fff;
+	margin-top:24px;
+	line-height:33px;
+	transition:all .5s
+}
+.lsb-span{
+	width:24px;
+	height:4px;
+	background:#fff;
+	transition:all .5s;
+	margin:auto;
+	margin-top:24px
+}
+.lsb-introduce{
+	font-size:14px;
+	color:#fff;
+	display:-webkit-box;
+	transition:all .5s;
+	margin-top:136px
+}
+.lsb-href{
+	width:144px;
+	height:40px;
+	padding:9px 18px;
+	border:1px solid #fff;
+	border-radius:2px;
+	text-decoration:none;
+	transition:all .5s;
+	margin:auto;
+	margin-top:32px;
+	color:#fff
+}
+.lsb-href>div{
+	width: 108px;
+}
+.lsb-href span{
+	font-size:16px;
+	line-height:22px;
+	float:left
+}
+.lsb-href .icon-jinru{
+	width:8px;
+	height:22px;
+	line-height:22px;
+	font-family:iconfont!important;
+	font-style:normal;
+	float:right;
+	color:"#fff";
+	font-size:16px
+}
+.lsb-href:after{
+	content:"";
+	display:block;
+	clear:both;
+	visibility:hidden;
+	line-height:0;
+	height:0;font-size:0
+}
+.lsb-href:hover{
+	background:#fff;
+	color:#108ee9
+}
+.lsb-href:hover .icon-jinru{
+	color:#108ee9
+}

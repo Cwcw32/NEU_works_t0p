@@ -1,0 +1,211 @@
+* {
+	margin: 0;
+	padding: 0;
+	font-family: "microsoft yahei";
+}
+
+a {
+	text-decoration: none;
+}
+
+ul {
+	list-style: none;
+}
+
+img {
+	border: none;
+}
+
+.container {
+	min-width: 1210px;
+	padding-top: 60px;
+	margin: 0 auto;
+}
+
+.w1210 {
+	width: 1210px;
+	margin: 0 auto;
+}
+
+.customer-comment .title {
+	max-width: 1210px;
+	padding-bottom: 10px;
+	margin: 0 auto;
+	font-size: 30px;
+	font-weight: 300;
+	color: #333;
+	text-align: center;
+}
+
+.customer-comment {
+	background: url(../images/case-bg.jpg) no-repeat center center;
+}
+
+.customer-comment .content {
+	position: relative;
+	padding: 40px 0 60px;
+}
+
+.customer-comment .bd {
+	width: 950px;
+	height: 430px;
+	padding: 30px 30px 0;
+	margin: 0 auto;
+	overflow: hidden;
+	background: #fff;
+	border: 1px solid #e5e5e5;
+	border: 1px solid rgba(0, 0, 0, .08);
+	border-radius: 6px;
+	box-shadow: 0 0 10px #ededed;
+	box-shadow: 2px 0 38px rgba(0, 0, 0, .08);
+}
+
+.comment-list li .customer-logo {
+	width: 200px;
+	height: 100px;
+	margin: 0 auto 20px;
+	overflow: hidden;
+}
+
+.comment-list li .customer-logo img {
+	margin-top: -50px;
+}
+
+.comment-list li .comment-text {
+	height: 160px;
+	padding: 35px 0;
+}
+
+.comment-list li.special .comment-text {
+	height: 230px;
+	padding: 0;
+	font-size: 16px;
+}
+
+.comment-list li .comment-text p {
+	position: relative;
+	z-index: 1;
+	padding: 0 60px;
+	font-size: 18px;
+	line-height: 2;
+}
+
+.comment-list li.special .comment-text p {
+	font-size: 14px;
+}
+
+.comment-list li.special .comment-text strong {
+	color: #e8373d;
+}
+
+.comment-list li .comment-text .iconfont {
+	position: absolute;
+	font-size: 55px;
+	line-height: 1;
+	color: #ccc;
+}
+
+.comment-list li .comment-text .comment-icon-left {
+	left: 0;
+	top: -20px;
+}
+
+.comment-list li .comment-text .comment-icon-right {
+	right: 0;
+	bottom: -10px;
+}
+
+.comment-list li .comment-other {
+	text-align: center;
+}
+
+.comment-list li .comment-other img {
+	width: 50px;
+	height: 50px;
+	margin-left: 120px;
+	vertical-align: middle;
+	border-radius: 50%;
+}
+
+.comment-list li .comment-other .comment-other-line {
+	display: inline-block;
+	width: 1px;
+	height: 40px;
+	margin: 0 20px;
+	vertical-align: middle;
+	background: #ddd;
+	overflow: hidden;
+}
+
+.comment-list li .comment-other .comment-other-text {
+	display: inline-block;
+	width: 200px;
+	font-size: 14px;
+	line-height: 26px;
+	color: #999;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.comment-list li .comment-other .comment-other-text h3 {
+	font-size: 14px;
+	color: #666;
+}
+
+.customer-comment .hd ul {
+	padding-top: 25px;
+	text-align: center;
+}
+
+.customer-comment .hd ul li {
+	display: inline-block;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.customer-comment .hd ul span {
+	display: inline-block;
+	width: 6px;
+	height: 6px;
+	background: #ccc;
+	border: 1px solid transparent;
+	border-radius: 50%;
+}
+
+.customer-comment .hd ul .active span {
+	background: transparent;
+	border: 1px solid #999;
+}
+
+.customer-comment .hd a {
+	position: absolute;
+	top: 230px;
+}
+
+.customer-comment .hd a.prev {
+	left: 0;
+}
+
+.customer-comment .hd a.next {
+	right: 0;
+}
+
+.customer-comment .hd .iconfont {
+	display: block;
+	width: 50px;
+	height: 50px;
+	font-size: 35px;
+	line-height: 50px;
+	color: #ccc;
+	text-align: center;
+	background: #f1f1f1;
+	border: 1px solid #ddd;
+	border-radius: 50%;
+	transition: all .2s;
+}
+
+.customer-comment .hd a:hover .iconfont {
+	color: #fff;
+	background: #ccc;
+	border-color: #ccc;
+}

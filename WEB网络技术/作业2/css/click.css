@@ -1,0 +1,96 @@
+/*
+* @Author: Administrator
+* @Date:   2018-11-27 20:14:35
+* @Last Modified by:   Administrator
+* @Last Modified time: 2018-11-30 11:41:15
+*/
+/*时分秒指针初始化是垂直的，指针移动没有设置过渡效果和过渡时间，
+就是根据角度来定位置*/
+
+#cd{
+    margin:0px;
+    padding:0px;
+    display: flex;
+    min-height: 100vh;
+    justify-content:center;
+    align-items:center;
+}
+/*采用的是标准盒模型，即是纯宽高*/
+.clock{
+    position:relative;
+    width:3rem;
+    height:3rem;
+    border:0.2rem solid white;
+    margin:0.5rem auto;
+    padding:0.2rem;
+    background: rgba(0,0,0,0.4);
+    border-radius:50%;
+    box-shadow:0 0 2px 4px rgba(0,0,0,0.1),
+               0 0 10px 3px rgba(0,0,0,0.2),
+               0 0 1px 2px #EFEFEF inset,
+               0 0 30px black inset;
+}
+.clock-face{
+    position:relative;
+    width:100%;  /*这里的100%是300px,是clock的宽*/
+    height:100%;
+}
+/*时钟表表盘中心圆点*/
+.clock-face::after{
+    content:'';
+    display: block;
+    width:.1rem;
+    height:.1rem;
+    background-color: #a8c5d1;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    border-radius:50%;
+}
+/*指针通用样式，在sass中可以封装成一个mixin*/
+.hand{
+    background: #fff;
+    position:absolute;
+    bottom:50%;
+    left:50%;
+    /*transform:translateX(-50%); 虽说这样可以使指针居中线，但是translate的平移是相对于自身center位置的，那么这样居中处理后，下面的旋转仍旧按的是平移之前的right位置为原点，虽说三个指针通过translateY看似处于一条中线上，实际旋转时仍然是按照各自的right位置进行旋转*/ 
+    transform:rotate(0deg);
+    transform-origin:50% 100%;
+    box-shadow: 
+      0 0 0 1px rgba(0, 0, 0, 0.1),
+      0 0 8px rgba(0, 0, 0, 0.4),
+      2px 5px 1px rgba(0, 0, 0, 0.5);
+}
+
+/*时针样式*/
+.hour-hand{
+    height:40%;
+    width:0.1rem;
+    margin-left:-0.05rem;  /*使时针向左移动自身的一半来居中*/
+    border-bottom-left-radius: .05rem;
+    border-top-left-radius:.05rem;
+}
+.min-hand {
+    height: 45%;
+    width: .05rem;
+    margin-left:-0.025rem;
+}
+.second-hand {
+    height: 50%;
+    width: .02rem;
+    margin-left:-0.01rem;
+    border-bottom-left-radius: .02rem;
+    border-top-left-radius: .02rem;
+    background-color: red;
+}
+/*日期，时间，星期几的样式*/
+.dateblock{
+    width: 5rem;
+    position: relative;
+    font-size:.7rem;
+    font-family:serif;
+    font-weight:bold;
+    text-align: center;
+    color:white;
+}

@@ -1,0 +1,14 @@
+@charset "utf-8";
+
+
+
+/* wrap */
+#banner{width:100%;height:437px;position:relative;}
+.wrap{margin:10px auto;width:100%;height:437px;position:relative;overflow:hidden;}
+.pic{width:679px;height:437px;}
+.pic1{background:url('../images/t1.jpg');position:absolute;top:0;left:0;z-index:1;}
+.pic2{background:url('../images/t2.jpg');position:absolute;top:0;left:679px;z-index:3;}
+.pic3{background:url('../images/t3.jpg');position:absolute;top:0;left:770px;z-index:5;}
+.pic4{background:url('../images/t4.jpg');position:absolute;top:0;left:861px;z-index:7;}
+.pic5{background:url('../images/t5.jpg');position:absolute;top:0;left:952px;z-index:9;}
+.pic6{background:url('../images/t6.jpg');position:absolute;top:0;left:1043px;z-index:11;}

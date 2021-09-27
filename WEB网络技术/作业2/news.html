@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>新闻资讯</title>
+<!--CSS-->
+	  <link rel="stylesheet" href="css/base.css"><!--导航栏-->
+	  <link rel="stylesheet" href="css/footer.css"><!--底部导航-->
+	  <link rel="stylesheet" href="css/news_c.css"><!--底部导航-->
+
+</head>
+<!--JS脚本-->
+	<script src="js/jquery.js"></script>
+	<script src="js/news_fp.js"></script>
+  <script type="text/javascript" src="layui/layui.js"></script>
+  <script type="text/javascript">
+    layui.config({
+      base: '../res/js/util/'
+    }).use(['element','laypage','jquery','menu'],function(){
+      element = layui.element,laypage = layui.laypage,$ = layui.$,menu = layui.menu;
+      laypage.render({
+        elem: 'demo'
+        ,count: 70 //数据总数，从服务端得到
+      });
+      menu.init();
+    })
+  </script>
+<body>
+<!--网页导航-->
+<header>
+    <div id="logo"><a href="home.html"><img src="images/logo.jpg" width="100%" height="100%"></a></div>
+    <nav class="topnav" id="topnav">
+	  <a href="home.html">
+		  <span>首页</span>
+		  <span class="en">Home</span>
+	  </a>
+	  <a href="news.html">
+		  <span>新闻</span>
+		  <span class="en">News</span>
+	  </a>
+		  <a href="kepu.html">
+		  <span>科普</span>
+		  <span class="en">Know</span>
+	  </a>
+    </nav>
+</header>
+<!-- 新闻部分  -->
+
+  <div class="content">
+    <div class="cont w1000">
+      <div class="title">
+        <span class="layui-breadcrumb" lay-separator="|">
+          <a href="javascript:;" class="active">主页</a>
+          <a href="javascript:;">新闻</a>
+        </span>
+      </div>
+      <div class="list-item">
+        <div class="item">
+          <div class="layui-fluid">
+            <div class="layui-row">
+              <div class="layui-col-xs12 layui-col-sm4 layui-col-md5">
+                <div class="img"><img src="./images/news_1.jpg" alt=""></div>
+              </div>
+              <div class="layui-col-xs12 layui-col-sm8 layui-col-md7">
+                <div class="item-cont">
+                  <h3><a href="./news/news_p1.html" >（新华网）中国共产党第十九届中央委员会第五次全体会议公报</a><button class="layui-btn layui-btn-danger new-icon">new</button></h3>
+                  <h5>政策动态</h5>
+                  <p><a href="./news/news_p1.html">中国共产党第十九届中央委员会第五次全体会议，于2020年10月26日至29日在北京举行。
+出席这次全会的有，中央委员198人，候补中央委员166人。中央纪律检查委员会常务委员会委员和有关方面负责同志列席会议。党的十九大代表中的部分基层同志和专家学者也列席会议。
+全会由中央政治局主持。中央委员会总书记习近平作了重要讲话。</a></p>
+                </div>
+            </div>
+            </div>
+           </div>
+        </div>
+        <div class="item">
+          <div class="layui-fluid"> 
+            <div class="layui-row">
+              <div class="layui-col-xs12 layui-col-sm4 layui-col-md5">
+                <div class="img"><img src="./news/images/p2_1.jpg" alt=""></div>
+              </div>
+              <div class="layui-col-xs12 layui-col-sm8 layui-col-md7">
+                <div class="item-cont">
+                  <h3><a href="./news/news_p2.html" >生态环境部部长出席“77国集团和中国”气候变化部长级会议</a><button class="layui-btn layui-btn-danger new-icon">new</button></h3>
+                  <h5>政策动态</h5>
+                  <p><a href="./news/news_p2.html" >10月29日，“77国集团和中国”（以下简称“G77+中国”）气候变化部长级会议以视频方式召开，会议主题为“后疫情时代保持通向2030年可持续发展议程的低碳发展路径”。“G77+中国”主席国圭亚那总统伊尔法恩·阿里、联合国秘书长古特雷斯在线致辞。生态环境部部长黄润秋应邀出席会议并讲话。</a></p>
+                </div>
+            </div>
+            </div>
+           </div>
+        </div>
+        <div class="item">
+          <div class="layui-fluid">
+            <div class="layui-row">
+              <div class="layui-col-xs12 layui-col-sm4 layui-col-md5">
+                <div class="img"><img src="./news/images/p3_1.jpg" alt=""></div>
+              </div>
+              <div class="layui-col-xs12 layui-col-sm8 layui-col-md7">
+                <div class="item-cont">
+                  <h3><a href="./news/news_p3.html" >住友橡胶最新研发成果，稳踞行业科技前沿</a></h3>
+                  <h5>环保创新</h5>
+                  <p><a href="./news/news_p3.html" >近日，住友橡胶工业株式会社正式宣布，新型"低气味天然橡胶"技术研发成功。该技术通过抑制天然橡胶原材料中引|发气味的非橡胶成分(例如蛋白质和脂类)的分解，大幅降低了天然橡胶散发出的气气味。目前，住友橡胶集团在泰国的天然橡胶加工厂已引入该项技术。</a></p>
+                </div>
+            </div>
+            </div>
+           </div>
+        </div>
+        <div class="item">
+          <div class="layui-fluid">
+            <div class="layui-row">
+              <div class="layui-col-xs12 layui-col-sm4 layui-col-md5">
+                <div class="img"><img src="./news/images/p4_1.jpg" alt=""></div>
+              </div>
+              <div class="layui-col-xs12 layui-col-sm8 layui-col-md7">
+                <div class="item-cont">
+                  <h3><a href="./news/news_p4.html" >谱写时代“中国蓝” 思搏盈环保以科技引领行业创新发展</a></h3>
+                  <h5>环保创新</h5>
+                  <p><a href="./news/news_p4.html" >伴随着我国工业化、城镇化的发展，我国已迈入了新的时代发展进程。近年来，我们见证着社会经济的腾飞，经历着科学技术的进步，与此同时，我们也面临着时代赋予我们的挑战——大气治理便是其中之一。当下，超低排放改造、大气污染防治、大气污染综合治理等已成为社会热点话题，因而，大气治理行业便得到了蓬勃的发展。一批又一批大气治理行业的领航者因时代孕育而生，而在大气治理行业如此蓬勃的发展背景下，湖北思搏盈环保科技股份有限公司凭借着其先进的大气治理技术，全面综合化的大气治理系统，在众多大气治理行业中脱颖而出，当之无愧地成为了大气治理行业的领航者。</a></p>
+                </div>
+            </div>
+            </div>			 
+           </div>
+        </div>		    
+      </div>
+      <div id="demo" style="text-align: center;"></div>
+    </div>
+  </div>		
+<!--INDEX第五个主体,底部-->
+<div class="dibu">
+<div class="footer">
+	<div class="other-link clearfix">
+		<div class="link-look clearfix">
+			<div class="link-list">
+				<h3 class="link-title">网站导航</h3>
+				<ul>
+					<li>
+						<a href="home.html">首页</a>
+					</li>
+										<li>
+						<a href="news.html">新闻</a>
+					</li>
+										<li>
+						<a href="kepu.html">科普</a>
+					</li>
+				</ul>
+			</div>
+			<div class="link-list">
+				<h3 class="link-title">快速入口</h3>
+				<ul>
+					<li>
+						<a href="http://www.baidu.com" target="_blank" class="c_login">百度</a>
+					</li>
+				</ul>
+			</div>
+			<div class="link-list">
+				<h3 class="link-title">帮助支持</h3>
+				<ul>
+					<li>
+						<a href="http://www.chinaenvironment.com/">环保网</a>
+					</li>
+					<li>
+						<a href="http://www.mee.gov.cn/">中华人民共和国生态环境部</a>
+					</li>
+				</ul>
+			</div>
+			<div class="link-list">
+				<h3 class="link-title">关于我们</h3>
+				<ul>
+					<li>
+						<a href="#">关于本网站</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="sucai-contact">
+			<div class="bottom-logo">
+				<a href="#"></a>
+			</div>
+			<div class="sucai-companyname">联系我</div>
+			<div class="sucai-qq">8:00~11:00在线 QQ：294594605</div>
+
+				
+    
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<p>Copyright © Type0Factor. All Rights Reserved. 2018 版权所有</p>
+	</div>
+</div>
+</div>
+</body>
+</html>

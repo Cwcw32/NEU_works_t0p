@@ -1,0 +1,16 @@
+void main()
+{
+   int a,b,c,d,x,y,z,w;
+   while ( a<b )  
+   {
+        if ( c>d )
+       { 
+            x=y+z;
+       }
+       else 
+       {
+           x=y+z*w;
+       }
+       z=z+x;
+   }
+}
