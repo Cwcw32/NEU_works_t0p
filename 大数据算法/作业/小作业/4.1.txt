@@ -1,0 +1,176 @@
+package duobiaolianjie;
+
+    import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+    import java.util.StringTokenizer;
+    import org.apache.hadoop.conf.Configuration;
+    import org.apache.hadoop.conf.Configured;
+    import org.apache.hadoop.fs.Path;
+    import org.apache.hadoop.io.FloatWritable;
+    import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.NullWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.InputSplit;
+import org.apache.hadoop.mapreduce.Job;
+    import org.apache.hadoop.mapreduce.Mapper;
+    import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.FileSplit;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+import org.apache.hadoop.util.GenericOptionsParser;
+import org.apache.hadoop.util.Tool;
+    import org.apache.hadoop.util.ToolRunner;
+    import org.apache.log4j.Logger;
+    import org.apache.hadoop.fs.*;
+    //import org.apache.hadoop.conf.Configuration;
+    
+    
+    
+    public class aaa{
+	    private static final Logger LOG = Logger.getLogger(aaa.class);
+
+         public static void main(String[] args) throws Exception {
+             Configuration conf = new Configuration();
+             
+        //     String[] otherargs=(new GenericOptionsParser(conf,args)).getRemainingArgs();
+             //获得实例
+             conf.set("fs.defaultFS","hdfs://Master:9000");
+        //     String remoteDIr=otherargs[0];//HDFSlujing 
+             
+             FileSystem fs=FileSystem.get(conf);
+             
+             Path outPath=new Path(args[3]);
+             if(fs.exists(outPath))
+             {
+            	 fs.delete(outPath,true);
+                 System.out.println("#######");
+             }
+       // dirPath=new Path(remoteDIr);
+       //      RemoteIterator<LocatedFileStatus> remoteIterator=fs.listFiles(dirPath,true);
+             
+
+             
+
+
+             //conf.setStrings("w_num", w_num+"");
+             Job job = Job.getInstance(conf, "dblj");
+             job.setJarByClass(aaa.class);
+             //MAP
+             
+             job.setMapperClass(aaa.TokenizerMapper.class);
+             //COMBINE
+             //job.setCombinerClass(aaa.wcCombiner.class);
+             //REDUCE
+             job.setReducerClass(aaa.FloatSumReducer.class);
+             //OUTPUT
+             job.setMapOutputKeyClass(Text.class);
+             job.setOutputValueClass(Text.class); 
+
+             job.setNumReduceTasks(1);
+             LOG.info(String.format("No of Reducers: %s", job.getNumReduceTasks()));
+            
+        //     FileInputFormat.addInputPath(job, new Path(args[0]));
+        	 FileInputFormat.addInputPath(job,new Path(args[0]));
+				String cacheFile1="hdfs://Master:9000/user/j/input/student.txt";
+				String cacheFile2="hdfs://Master:9000/user/j/input/course.txt";
+			//	cacheFile1 +="#student.txt";
+			//	cacheFile2 +="#course.txt";
+			 URI[] files=new URI[2]; 
+			 files[0]=new URI(cacheFile1);
+			 files[1]=new URI(cacheFile2);
+             job.setCacheFiles(files);
+             
+             FileOutputFormat.setOutputPath(job, new Path(args[args.length - 1]));
+             System.exit(job.waitForCompletion(true)?0:1);
+
+             
+     
+        }
+         
+        public static class TokenizerMapper extends Mapper<Object, Text, Text, Text> {
+            private Text a[]; 
+            Map<String,String>stuMap=new HashMap<>();
+            Map<String,String>couMap=new HashMap<>();
+            boolean flag=true;
+            public TokenizerMapper() {
+            	
+            }
+	//student.txt
+         @Override
+		protected void setup(Context context)throws IOException, InterruptedException {
+        	 	//super.setup(context);
+        	 	URI[] cacheFiles=context.getCacheFiles();
+        	 	FileSystem fs=FileSystem.get(cacheFiles[0],context.getConfiguration());
+        	 	FSDataInputStream inputStream1=fs.open(new Path(cacheFiles[0]));
+					//读取 “学生表”
+					//学号，姓名，联系方式，宿舍(输出只要学号姓名)        	 		
+					BufferedReader sb = new BufferedReader(new InputStreamReader(inputStream1));
+					String str = null;
+					while((str = sb.readLine()) != null){
+						String []  strs = str.split(" ");
+						stuMap.put(strs[0], strs[1]);
+					}
+					sb.close();
+	        	 	FSDataInputStream inputStream2=fs.open(new Path(cacheFiles[1]));
+						//读取 “学生表”
+						//学号，姓名，联系方式，宿舍(输出只要学号姓名)        	 		
+					BufferedReader sb2 = new BufferedReader(new InputStreamReader(inputStream2));
+					String str2 = null;
+					while((str2 = sb2.readLine()) != null){
+						String []  strs = str2.split(" ");
+						couMap.put(strs[0], strs[1]+" "+strs[2]);
+					}
+					sb2.close();
+         
+	}
+            public void map(Object key, Text value, Mapper<Object, Text, Text, Text>.Context context) throws IOException, InterruptedException {
+            
+	//values[0] 学号，values[1]课程号，values[2]上课时间，values[3]上课地点
+	//结果：学号，姓名，课程名称，学时，上课时间，上课地点
+            String line = value.toString();
+			String lines [] = line.split(" ");
+			String xuehao = lines[0];
+			String kechenghao = lines[1];
+			String shangkeshijian= lines[2];
+			String shangkedidian=lines[3];
+			//join连接操作
+            System.out.println(")))))");
+			if(stuMap.containsKey(xuehao) && couMap.containsKey(kechenghao)){
+				String xingming=stuMap.get(xuehao);
+				String lines2[]=couMap.get(kechenghao).split(" "); 
+				String kechengming=lines2[0];
+				String xueshi=lines2[1];
+				System.out.println(new Text(xuehao+" "+xingming+" "
+						+kechengming+" "+xueshi+" "+shangkeshijian+" "
+						+shangkedidian	
+						));
+				context.write(new Text(xuehao+" "+xingming),new Text(
+						kechengming+" "+xueshi+" "+shangkeshijian+" "
+						+shangkedidian	
+						));
+			}	
+           }
+     }
+
+    public static class FloatSumReducer extends Reducer<Text, Text, Text, Text> {
+            public FloatSumReducer() {
+            }
+            public void reduce(Text key, Iterable<NullWritable> values, Reducer<Text, Text, Text, Text>.Context context) throws IOException, InterruptedException {
+            	Text temp=new Text();
+            	for(Iterator i$=values.iterator();i$.hasNext();)
+            	{
+            		temp=(Text)i$.next();
+            		context.write(key,temp);
+            	}
+            	
+            }
+        }
+    }

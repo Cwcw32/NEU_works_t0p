@@ -1,0 +1,47 @@
+#include <iostream>
+#include <string>
+#include <ctime>
+using namespace std;
+int main()
+{
+    unsigned seed=time(0);
+    string A;
+    cin>>A;
+    int result=0;
+    float e;
+    cin>>e;
+    char w;
+    cin>>w;
+    int len=A.size();
+    int you=0,wu=0;
+
+    for(int j=0; j<10000; j++)
+    {
+        int flag=1;
+        for(int i =0; i<2/e; i++)
+        {
+            int k=rand()%len;
+            if(A[k]==w)
+            {
+                cout<<"有目标字符"<<endl;
+                flag=0;
+                you++;
+                break;
+            }
+        }
+        if(flag)
+            {wu++;
+                cout<<"无目标字符"<<endl;}
+    }
+    cout<<"字符串长度"<<len<<endl;
+    int num=0;
+    for(auto &i:A)
+    {
+        if(i==w)
+            num++;
+    }
+    cout<<w<<"共"<<num<<endl;;
+    cout<<"成功:"<<you<<"失败:"<<wu<<endl;
+
+}
+//aaaaaaaaaabaaaaaaaaaacbbbbbbbbbbbcasdwpgpegpccpdap

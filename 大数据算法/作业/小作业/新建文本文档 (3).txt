@@ -1,0 +1,276 @@
+package dblj2;
+import java.io.IOException;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.Vector;
+
+import org.apache.hadoop.conf.Configuration;   
+import org.apache.hadoop.conf.Configured;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;   
+import org.apache.hadoop.io.Text;   
+import org.apache.hadoop.mapreduce.Job;   
+import org.apache.hadoop.mapreduce.Mapper;   
+import org.apache.hadoop.mapreduce.Reducer;   
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;   
+import org.apache.hadoop.mapreduce.lib.input.FileSplit;   
+import org.apache.hadoop.mapreduce.lib.input.TextInputFormat;   
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;   
+import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;   
+import org.apache.hadoop.util.Tool;
+import org.apache.hadoop.util.ToolRunner;   
+import org.slf4j.Logger;   
+import org.slf4j.LoggerFactory;
+
+/**   
+ * @author xbf
+ * table1(course)
+ * course.txt文件内容,分隔符为" "：   
+ * //课程号，课程名称，学时     
+ * C309 计算机体系结构 38
+ * A912 软件工程 88
+ * B912 大学物理 83 
+ * --------------------------------------------------------   
+ * table2(student)：
+ * student.txt文件内容,分隔符为" "
+ * //学号，姓名，联系方式，宿舍(输出只要学号姓名) ：   
+ * 20184484 胥卜凡 18640666836 A410
+ * 20188888 贝拉 18684103912 A410
+ * 20194832 马云 12345678911 B444
+ * 20173822 奶茶 987654321 C493
+ *  * --------------------------------------------------------   
+ * table3(xuanke)   
+ * xuanke.txt文件内容,分隔符为" "： 
+ * 学号      课程号 上课时间 上课地点  
+ * 20184484 C309 9月30日 一号楼A405
+ * 20184484 A912 9月31日 一号楼B320
+ * 20184484 B912 8月29日 信息楼C391
+ * 20188888 C309 9月30日 一号楼A405
+ * 20188888 A912 9月15日 一号楼A410
+ * 20173822 C309 9月39日 一号楼A403
+ * 20194832 C309 9月30日 一号楼A402
+ * 20194832 A912 9月30日 一号楼A402
+ * 20194832 B912 9月29日 一号楼A402
+ *   
+ * --------------------------------------------------------   
+ *  结果：  
+ *  学号，     姓名，课程名称，学时，上课时间，上课地点
+ *  20184484  xbf  xxxx   xx    xx       xxx
+ */ 
+public class d2{   
+    private static final Logger logger = LoggerFactory.getLogger(d2.class);   
+    public static class LeftOutJoinMapper extends Mapper<Object, Text, Text, JoinValues> {   
+        private JoinValues JoinValues = new JoinValues();   
+        private Text flag = new Text();   
+        private Text joinKey = new Text();   
+        private Text secondPart = new Text();   
+        @Override 
+        protected void map(Object key, Text value, Context context)   
+                throws IOException, InterruptedException {   
+            //获得文件输入路径   
+            String pathName = ((FileSplit) context.getInputSplit()).getPath().toString();   
+            //数据来自course文件,标志即为"0"   
+            if(pathName.endsWith("course.txt")){   
+                String[] valueItems = value.toString().split(" ");   
+                //过滤格式错误的记录   
+                if(valueItems.length !=3 ){   
+                    return;   
+                }   
+                flag.set("0");   
+                joinKey.set(valueItems[0]);   //e
+                secondPart.set(valueItems[1]+" "+valueItems[2]);//f g
+                JoinValues.setFlag(flag);   
+                JoinValues.setJoinKey(joinKey);   
+                JoinValues.setSecondPart(secondPart);   
+                context.write(JoinValues.getJoinKey(), JoinValues);
+                }
+            //数据来自于student.txt，标志即为"1"   
+            else if(pathName.endsWith("student.txt")){   
+                String[] valueItems = value.toString().split(" ");   
+                //过滤格式错误的记录 (OK)
+                if(valueItems.length != 4){   
+                    return;   
+                }   
+                flag.set("1");   
+                joinKey.set(valueItems[0]);   //a
+                secondPart.set(valueItems[1]);   //b
+                JoinValues.setFlag(flag);   
+                JoinValues.setJoinKey(joinKey);   
+                JoinValues.setSecondPart(secondPart);   
+                context.write(JoinValues.getJoinKey(), JoinValues);   
+            } 
+            //数据来自于xuanke.txt，标志即为"1"   
+            else if(pathName.endsWith("xuanke.txt"))
+            {
+                String[] valueItems = value.toString().split(" ");   
+                //过滤格式错误的记录   
+                if(valueItems.length != 4){   
+                    return;   
+                }   
+                flag.set("2");   
+                joinKey.set(valueItems[0]+" "+valueItems[1]);//a e   
+                secondPart.set(valueItems[2]+" "+valueItems[3]);  //h i 
+                JoinValues.setFlag(flag);   
+                JoinValues.setJoinKey(joinKey);   
+                JoinValues.setSecondPart(secondPart);   
+                context.write(JoinValues.getJoinKey(), JoinValues);
+            }
+        }   
+    }   
+    public static class LeftOutJoinReducer extends Reducer<Text, JoinValues, Text, Text> {   
+        //存储一个分组中的student表信息   
+        private Vector<Text> courseTable = new Vector<Text>();   
+        //存储一个分组中的course表信息   
+        private Vector<Text> studentTable = new Vector<Text>();   
+        //存储一个分组中的xuanke表信息   
+        private Vector<Text> xuankeTable = new Vector<Text>();   
+        int flag=1;
+        private Text secondPar = null;   
+        private Text output = new Text();   
+        /**   
+         * 一个分组调用一次reduce函数   
+         */ 
+        @Override 
+        protected void reduce(Text key, Iterable<JoinValues> value, Context context)   
+                throws IOException, InterruptedException {   
+        	courseTable.clear();   
+        	studentTable.clear();   
+        	xuankeTable.clear();   
+        	if(flag==0)//test yong
+        	{
+        		for(JoinValues c:value)
+        		{
+        			secondPar=new Text(c.getSecondPart().toString());
+
+                if("0".equals(c.getFlag().toString().trim())){   
+                	
+                	String e=c.getJoinKey().toString();
+                    Text res=new Text(e+" "+secondPar.toString());//e f g
+                	courseTable.add(res);   
+                	context.write(key, res);
+                }   
+        		}
+        	}
+        	else
+        	{
+            for(JoinValues cv : value){   
+                secondPar = new Text(cv.getSecondPart().toString());   
+                //course   
+                if("0".equals(cv.getFlag().toString().trim())){   
+                	
+                	String e=cv.getJoinKey().toString();
+                    Text res=new Text(e+" "+secondPar.toString());//e f g
+                	courseTable.add(res);   
+                }   
+                //student  
+                else if("1".equals(cv.getFlag().toString().trim())){   
+                	String a=cv.getJoinKey().toString();
+                    Text res=new Text(a+" "+secondPar.toString());//a b
+                	studentTable.add(res);     
+                }   
+                //xuanke
+                else if("2".equals(cv.getFlag().toString().trim())){   
+                	String ae=cv.getJoinKey().toString();
+                    Text res=new Text(ae+" "+secondPar.toString());//a e h i
+                	xuankeTable.add(res);    
+                }   
+            }
+            logger.info("course::"+courseTable.toString());   
+            logger.info("student:"+studentTable.toString());   
+            logger.info("student:"+xuankeTable.toString());   
+            if(flag==0)
+            {
+            	for(Text coPart : courseTable){
+                	String[] co=coPart.toString().split(" ");
+                	String e2=co[0];
+                    context.write(new Text(e2+"??"), new Text(co[0]+" "+co[1]+" "
+                    					+co[2]));
+                    
+            	}
+            }
+            else {
+            	int x1=xuankeTable.size();
+            	int x2=courseTable.size();
+            	int x3=studentTable.size();
+            	for(int i=0;i<x1;i++) {
+            		String []xk=xuankeTable.get(i).toString().split(" ");
+            		String a=xk[0];
+            		String e=xk[1];
+            		
+            		for(int j=1;j<x2;j++) {
+            			String[] co=courseTable.get(j).toString().split(" ");
+            			String e2=co[0];
+            			for(int k=1;k<x3;k++)
+            			{
+            				String[] st=studentTable.get(k).toString().split(" ");
+            				String a2=st[0];
+            				if((a2.equals(a)))
+            					if(e2.equals(e))
+            					{
+                        			output.set(new Text(
+                    						a2+" "+st[1]+" "+//a b
+                    						co[1]+" "+co[2]+" "+//f g
+                    						xk[2]+" "+xk[3])//h i
+                    					);
+                    			context.write(new Text(), output);   
+            					}
+            			}
+            		}
+            			
+              }  
+            }
+          } 
+        }   
+     }
+   
+    public static void main(String[] args)throws Exception {   
+        	Configuration conf = new Configuration();
+        
+        //     String[] otherargs=(new GenericOptionsParser(conf,args)).getRemainingArgs();
+             //获得实例
+             conf.set("fs.defaultFS","hdfs://Master:9000");
+        //     String remoteDIr=otherargs[0];//HDFSlujing 
+             
+             FileSystem fs=FileSystem.get(conf);
+             
+             Path outPath=new Path(args[3]);
+             if(fs.exists(outPath))
+             {
+            	 fs.delete(outPath,true);
+                 System.out.println("#######");
+             }
+       // dirPath=new Path(remoteDIr);
+       //      RemoteIterator<LocatedFileStatus> remoteIterator=fs.listFiles(dirPath,true);
+             //conf.setStrings("w_num", w_num+"");
+             Job job = Job.getInstance(conf, "dblj");
+             job.setJarByClass(d2.class);
+             //MAP
+             
+             job.setMapperClass(d2.LeftOutJoinMapper.class);
+             //COMBINE
+             //job.setCombinerClass(aaa.wcCombiner.class);
+             //REDUCE
+             job.setReducerClass(d2.LeftOutJoinReducer.class);
+             job.setInputFormatClass(TextInputFormat.class); //设置文件输入格式   
+             job.setOutputFormatClass(TextOutputFormat.class);//使用默认的output格格式
+             //OUTPUT
+          //   LOG.info(String.format("No of Reducers: %s", job.getNumReduceTasks()));
+             //设置map的输出key和value类型   
+             job.setMapOutputKeyClass(Text.class);   
+             job.setMapOutputValueClass(JoinValues.class);
+  
+             //设置reduce的输出key和value类型   
+             job.setOutputKeyClass(Text.class);   
+             job.setOutputValueClass(Text.class);   
+        //     FileInputFormat.addInputPath(job, new Path(args[0]));
+      
+             for(int i=0;i<3;i++)
+             {
+            	 FileInputFormat.addInputPath(job, new Path(args[i]));
+             }
+             FileOutputFormat.setOutputPath(job, new Path(args[args.length - 1]));
+             System.exit(job.waitForCompletion(true)?0:1);
+
+    }
+} 
+

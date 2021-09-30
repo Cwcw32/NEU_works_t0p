@@ -1,0 +1,84 @@
+#include <string>
+#include <iostream>
+#include <math.h>
+#include <ctime>
+using namespace std;
+
+int get(int length,int x)
+{
+    int ok=1;
+    //先判断是否是素数
+    if(length==x)
+        return 0;
+    for(int i=2; i<=length/2; i++)
+    {
+        if(length%i==0)
+        {
+            ok=0;
+            break;
+        }
+    }
+    if(ok==1)
+        return length;
+    else
+    {
+        length=get(length+1,x);
+        return length;
+    }
+}
+void  panduan(string s1,string s2)
+{
+    int len1=s1.size();
+    int len2=s2.size();
+    srand(time(0));
+    if(len1==len2)
+    {
+        long long asum=0;
+        long long bsum=0;
+        int p=(int)2*len1*len1*log(len1);
+        int length=ceil(log(p));
+        p=get(p,p*p);//找到离他最近,比他大的素数
+        for(int i=0; i<length; i++)
+        {
+            int j=rand()%len1;
+            {
+            asum+=s1[j]*pow(2,i);
+            bsum+=s2[j]*pow(2,i);
+            }
+        }
+        /*
+        cout<<p<<endl;
+        cout<<length<<endl;
+        cout<<asum<<endl;
+        cout<<bsum<<endl;
+        */
+        if(asum%p==bsum%p)
+            cout<<"xiangdeng"<<endl;
+        else
+            cout<<"buxiangdeng"<<endl;
+    }
+    else
+        cout<<"buxiangdeng"<<endl;
+}
+int main()
+{
+    string s1;
+    string s2;
+    string s3;
+    string s4;
+    cout<<"input!"<<endl;
+    s1="aaaaaaabbbbbbccccccccc";
+    s2=s1;
+    s3=s1;
+    s4="aaaaaaabccdbbccccccccc";
+    cout<<s1<<endl;
+    cout<<s2<<endl;
+    panduan(s1,s2);
+    cout<<s3<<endl;
+    cout<<s4<<endl;
+    panduan(s3,s4);
+
+return 0;
+}
+
+

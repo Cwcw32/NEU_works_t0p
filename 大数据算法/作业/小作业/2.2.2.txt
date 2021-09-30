@@ -1,0 +1,85 @@
+import time
+
+bucket_n = []  # 桶的列表
+
+n_max_bucket = int(input("请输入最大相同桶的数量："))
+
+size_window = int(input("请输入窗口的大小："))
+
+time_location = int(input("请输入当前时刻（从1开始）："))
+
+
+def Count_bit_act():
+    bit_sum = 0  # 统计1-bit个数
+
+    start_time = time.time()
+
+    with open('01stream.txt', 'r') as f:
+        f.seek(0 if time_location <= size_window else 2 * (time_location - size_window))  # 跳转到窗口大小之前行位置
+        for i in range(time_location if time_location <= size_window else size_window):
+            temp = f.readline()  # 读取值
+            if temp and int(temp.strip('\n')) == 1:
+                 bit_sum += 1
+    return bit_sum, time.time() - start_time
+
+
+def Is_due(time_now):
+    if len(bucket_n) > 0 and time_now - size_window == bucket_n[0]['timestamp']:  # 最左边的桶的时间戳等于当前时间减去窗口大小，到期了
+        del bucket_n[0]
+
+
+def Merge():
+    for i in range(len(bucket_n) - 1, n_max_bucket - 1, -1):
+
+        if bucket_n[i]['bit_sum'] == bucket_n[i - n_max_bucket]['bit_sum']:
+
+          # 存在n_max_bucket个大小相同的桶
+
+           bucket_n[i - n_max_bucket]['bit_sum'] += bucket_n[i - n_max_bucket + 1]['bit_sum']
+
+           bucket_n[i - n_max_bucket]['timestamp'] = bucket_n[i - n_max_bucket + 1]['timestamp']
+
+           del bucket_n[i - n_max_bucket + 1]
+
+
+def Count_bit():
+    bit_sum = 0
+
+    flag_half = 1
+
+    start_time = time.time()
+
+    with open('01stream.txt', 'r') as f:
+
+     for i in range(time_location):
+
+         temp = f.readline()  # 读取文件的值
+
+         if temp:
+
+             Is_due(i + 1)  # 判断是否有桶到期
+
+             if int(temp.strip('\n'))== 1:
+
+                 bucket = {"timestamp": i + 1, "bit_sum": 1}  # 桶的结构
+
+                 bucket_n.append(bucket)
+
+                 Merge()  # 合并大小相同的桶
+
+    for i in range(len(bucket_n)):
+        bit_sum += bucket_n[i]['bit_sum']
+
+    bit_sum -= bucket_n[0]['bit_sum'] / 2
+
+    return bit_sum if len(bucket_n) > 0 else 0, time.time() - start_time
+
+bit_sum, bit_time = Count_bit()
+
+bit_act_sum, bit_act_time = Count_bit_act()
+
+print("当前窗口中1的估计个数为：%d,运行时间为:%f" % (bit_sum, bit_time))
+
+print("当前窗口中1的精确个数为：%d,运行时间为:%f" % (bit_act_sum, bit_act_time))
+
+print("误差值：", abs((bit_act_sum - bit_sum) / bit_act_sum))

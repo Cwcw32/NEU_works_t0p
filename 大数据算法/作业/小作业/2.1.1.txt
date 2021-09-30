@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+#include <ctime>
+using namespace std;
+int main()
+{
+    string A="011001100100111111010100100000001010101010100101111111111111111111111111111111111111111111100000000000000000000000000000000000000000001111111111111111111111111000101001111010101001010101010101001010101010010101010100101010101010101010101111111111111111111111111110110100101110101010110101001010101001";
+//计算真实结果
+    int rel_1=0;
+    int len=A.size();
+    for(auto &i:A)
+    {
+        if(i=='1')
+            rel_1++;
+    }
+    int result=0;
+    //算法执行过程
+    for(int j=0; j<1000; j++)
+    {
+        const int k=5;
+        int B[k]= {};
+        int y=0;
+        for(int i=0; i<k; i++)
+        {
+            B[i]=A[i];
+        }
+        unsigned seed;
+        seed=time(0);
+        for(int i=k; i<len; i++)
+        {
+            float pr=(k*1.0)/i;
+            int r=rand()%100;
+            if(r<pr*100)
+            {
+                int f=rand()%k;//随机替换的元素
+                B[f]=A[i];
+            }
+
+        }
+        for(int i=0; i<k; i++)
+        {
+            if(B[i]=='1')
+                y++;
+        }
+        result+=y*len/k;
+    }
+    result= result/1000;
+    cout<<"真实："<<rel_1<<"算法:"<<result;
+}
+
